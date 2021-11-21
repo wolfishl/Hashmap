@@ -148,8 +148,8 @@ public class OurHashMap<K, V> implements Map<K, V> {
         Set<K> allKeys = m.keySet();
         for (K key : allKeys)
         {
-            Entry entry = (Entry)m.get(key);
-            this.put(key, (V)entry.value);
+            V value = (V)m.get(key);
+            this.put(key, value);
         }
     }
 
@@ -171,7 +171,7 @@ public class OurHashMap<K, V> implements Map<K, V> {
                 }
             }
         }
-        return (Set)keys;
+        return new HashSet<K>(keys);
     }
 
     @Override

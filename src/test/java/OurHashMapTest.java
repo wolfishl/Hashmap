@@ -1,5 +1,9 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class OurHashMapTest {
@@ -54,5 +58,180 @@ class OurHashMapTest {
 
         //then
         assertEquals("Hi", map.get("English1"));
+    }
+
+    @Test
+    void isEmptyTrue() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+
+        //then
+        assertTrue(map.isEmpty());
+    }
+
+    @Test
+    void isEmptyFalse() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+        map.put("English", "Hello");
+
+        //then
+        assertFalse(map.isEmpty());
+    }
+
+    @Test
+    void size() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+
+        //then
+        assertEquals(2, map.size());
+    }
+
+    @Test
+    void sizeEmpty() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+
+        //then
+        assertEquals(0, map.size());
+    }
+
+    @Test
+    void containsKeyTrue() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+
+        //then
+        assertTrue(map.containsKey("English"));
+    }
+
+    @Test
+    void containsKeyFalse() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+
+        //then
+        assertFalse(map.containsKey("Spanish"));
+    }
+
+    @Test
+    void containsValueTrue() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+
+        //then
+        assertTrue(map.containsValue("Hello"));
+    }
+
+    @Test
+    void containsValueFalse() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+
+        //then
+        assertFalse(map.containsValue("Hola"));
+    }
+
+    @Test
+    void remove() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+        map.remove("English");
+
+        //then
+        assertFalse(map.containsKey("English"));
+    }
+
+    @Test
+    void putAll() {
+        //given
+        OurHashMap<String, String> m = new OurHashMap<>();
+        m.put("English", "Hello");
+        m.put("French", "Bonjour");
+        OurHashMap<String, String> map = new OurHashMap<>();
+
+        //when
+        map.putAll(m);
+
+        //then
+        assertTrue(map.containsKey("English"));
+        assertTrue(map.containsKey("French"));
+    }
+
+    @Test
+    void clear() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+
+        //when
+        map.clear();
+
+        //then
+        assertTrue(map.isEmpty());
+    }
+
+    @Test
+    void keySet() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+
+        //when
+        Set<String> keys = map.keySet();
+
+        //then
+        assertTrue(keys.contains("English"));
+        assertTrue(keys.contains("French"));
+        assertTrue(keys.size() == map.size());
+    }
+
+    @Test
+    void values() {
+        //given
+        OurHashMap<String, String> map = new OurHashMap<>();
+        map.put("English", "Hello");
+        map.put("French", "Bonjour");
+
+        //when
+        Collection values = map.values();
+
+        //then
+        assertTrue(values.contains("Hello"));
+        assertTrue(values.contains("Bonjour"));
+        assertTrue(values.size() == map.size());
     }
 }

@@ -124,7 +124,6 @@ public class OurHashMap<K, V> implements Map<K, V> {
 
     @Override
     public V remove(Object key) {
-        //check that is key?
         int hashcode = key.hashCode();
         int index = Math.abs(hashcode) % SIZE;
         List<Entry> list = values[index];

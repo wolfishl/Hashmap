@@ -44,20 +44,9 @@ public class OurHashMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean containsKey(Object key) {
-        int hashcode = key.hashCode();
-        int index = Math.abs(hashcode) % SIZE;
-        List<Entry> list = values[index];
-        if(list == null){
-            return false;
-        }
-        for (Entry entry : list)
-        {
-            if (entry.key.equals(key))
-            {
-                return true;
-            }
-        }
-        return false;
+        V value = this.get(key);
+        boolean ret_val = value != null ? true : false;
+        return ret_val;
     }
 
     @Override
@@ -96,6 +85,7 @@ public class OurHashMap<K, V> implements Map<K, V> {
         }
         return null;
     }
+
 
     @Override
     public V put(K key, V value) {
@@ -159,7 +149,7 @@ public class OurHashMap<K, V> implements Map<K, V> {
 
     @Override
     public Set keySet() {
-        List<K> keys = new ArrayList<>();
+        HashSet<K> keys = new HashSet<>();
         for (List<Entry> list : values)
         {
             if (list != null)
@@ -170,7 +160,7 @@ public class OurHashMap<K, V> implements Map<K, V> {
                 }
             }
         }
-        return new HashSet<K>(keys);
+        return keys;
     }
 
     @Override

@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -176,7 +177,7 @@ class OurHashMapTest {
     @Test
     void putAll() {
         //given
-        OurHashMap<String, String> m = new OurHashMap<>();
+        HashMap<String, String> m = new HashMap<>();
         m.put("English", "Hello");
         m.put("French", "Bonjour");
         OurHashMap<String, String> map = new OurHashMap<>();

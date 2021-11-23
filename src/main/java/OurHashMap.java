@@ -133,11 +133,18 @@ public class OurHashMap<K, V> implements Map<K, V> {
 
     @Override
     public void putAll(Map m) {
-        Set<K> allKeys = m.keySet();
-        for (K key : allKeys)
+        OurHashMap<K, V> map = (OurHashMap) m;
+        List<Entry> newValues[] = map.values;
+        for (List<Entry> list : newValues)
         {
-            V value = (V)m.get(key);
-            this.put(key, value);
+            if (list == null)
+            {
+                continue;
+            }
+            for (Entry entry : list)
+            {
+                this.put((K)entry.key, (V)entry.value);
+            }
         }
     }
 

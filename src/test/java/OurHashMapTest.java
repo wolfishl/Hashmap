@@ -186,7 +186,9 @@ class OurHashMapTest {
 
         //then
         assertTrue(map.containsKey("English"));
+        assertEquals("Hello", map.get("English"));
         assertTrue(map.containsKey("French"));
+        assertEquals("Bonjour", map.get("French"));
     }
 
     @Test

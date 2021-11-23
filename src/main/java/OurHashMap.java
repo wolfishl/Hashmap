@@ -45,8 +45,7 @@ public class OurHashMap<K, V> implements Map<K, V> {
     @Override
     public boolean containsKey(Object key) {
         V value = this.get(key);
-        boolean ret_val = value != null ? true : false;
-        return ret_val;
+        return value != null;
     }
 
     @Override
